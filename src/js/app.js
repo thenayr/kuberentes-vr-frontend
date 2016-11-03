@@ -1,7 +1,7 @@
 import 'aframe';
 import 'aframe-teleport-controls';
 import 'aframe-layout-component';
-import 'aframe-extras';
+// import 'aframe-extras';
 import 'aframe-particle-system-component'
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
@@ -12,10 +12,10 @@ import Sky from './components/Sky';
 import partTexture from '../assets/images/kitten.png'
 
 var physics = require('aframe-physics-system');
-var extras = require('aframe-extras');
+// var extras = require('aframe-extras');
 physics.registerAll();
-extras.controls.registerAll();
-extras.misc.registerAll();
+// extras.controls.registerAll();
+// extras.misc.registerAll();
 
 class VRScene extends React.Component{
     render () {
