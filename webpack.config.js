@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: './build',
     filename: 'bundle.js',
-    publicPath: './build/',
+    publicPath: '/',
   },
   module: {
     noParse: [
