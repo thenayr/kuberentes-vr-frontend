@@ -29,7 +29,9 @@ class Pod extends React.Component {
         if (AFRAME.utils.isMobile()){
           lights = lights
         } else {
-          lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.2'}} />
+          lights = lights
+            // Lights are a huge performance hit unfortunately, revisit later on
+            //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.2'}} />
         }
         return(
             <Entity key={name}
