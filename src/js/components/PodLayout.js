@@ -49,8 +49,11 @@ class PodLayout extends React.Component {
         socket.emit('sniffPods', "true");
     }
 
-    componentWillMount() {
+    componentDidMount() {
       this.loadPodsFromServer(); 
+    }
+    randomPosition() {
+        return {x: Math.random() * 50 - 25, y: 10, z: Math.random() * 50 - 25};
     }
 
     render() {
@@ -58,16 +61,16 @@ class PodLayout extends React.Component {
         let podList = this.state.pods
         if (this.state.podsLoaded) {
             podList = podList.map((pod) => (
-                <Pod name={pod.name} key={pod.name} color="red" />
+                <Pod podPOS={this.randomPosition()} name={pod.name} key={pod.name} color="red" />
             ))
             return(
-                <Entity id="pod-layout" key="pod-layout" layout={{type: 'circle', radius: '10'}} >
+                <Entity   >
                     {podList}
                 </Entity>
             );
         } else {
             return(
-                <Pod name="test" key="test" color="red" />
+                <Pod podPOS={this.randomPosition()} name="test" key="test" color="red" />
             );
 
         }

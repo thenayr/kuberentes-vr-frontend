@@ -10,20 +10,33 @@ class Pod extends React.Component {
             color: props.color
         }
     }
+    
+    componentWillMount() {
+    }
 
     componentDidMount() {
+        // Fun hack to make physics and grab register newly added objects
+        [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.removeAttribute('sphere-collider'));
+        [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.setAttribute('sphere-collider', 'objects: .throwable;'));
         ReactDom.findDOMNode(this).setAttribute('dynamic-body', '');
+        ReactDom.findDOMNode(this).setAttribute('position', this.props.podPOS);
     }
 
     render() {
+        // Lights crash textures on mobile, disable them
+        let lights = null;
+        if (AFRAME.utils.isMobile()){
+          lights = lights
+        } else {
+          lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.2'}} />
+        }
         return(
-            <Entity 
-            id={`${this.props.name}`}
-            key={`${this.props.name}`}
+            <Entity key={name}
             geometry={{ primitive: 'box' }} 
-            shape="box" 
-            material={`color: ${this.state.color}; metalness:0.7`} >
-                <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.2'}} position="0 0 0" />
+            material={`color: ${this.state.color}; metalness:0.7`} 
+            className="throwable">
+                {lights}
+                <Entity bmfont-text={{ text: `${this.props.name}`, color: "#63C7B2", align: 'center'}} position="-2.5 1 0" />
             </Entity>
         )
     }
