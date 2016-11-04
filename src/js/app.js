@@ -36,6 +36,7 @@ class VRScene extends React.Component{
                    <Entity geometry={{ primitive: 'box'}} static-body={{shape: 'box'}} />
                  </Entity>
                 <Entity id="light" light={{type: 'point', color: '#3E72E8', intensity: '1.6'}} position="4.6 19 -9.00" />
+                <Entity id="ambLight" light={{type: 'ambient', color: '#fff', intensity: '0.8'}} position="0 0 0" />
                 <Control hand="left" />
                 <Control hand="right" cursor="vive-cursor" />
                 <Floor />
