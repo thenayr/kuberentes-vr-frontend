@@ -64,7 +64,7 @@ class PodLayout extends React.Component {
                 <Pod podPOS={this.randomPosition()} name={pod.name} key={pod.name} color="red" />
             ))
             return(
-                <Entity   >
+                <Entity>
                     {podList}
                 </Entity>
             );

@@ -16,8 +16,9 @@ class Pod extends React.Component {
 
     componentDidMount() {
         // Fun hack to make physics and grab register newly added objects
+        [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.components['sphere-collider']);
         [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.removeAttribute('sphere-collider'));
-        [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.setAttribute('sphere-collider', 'objects: .throwable;'));
+        [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.setAttribute('sphere-collider', 'objects: .pod;'));
         ReactDom.findDOMNode(this).setAttribute('dynamic-body', '');
         ReactDom.findDOMNode(this).setAttribute('position', this.props.podPOS);
     }
@@ -34,7 +35,7 @@ class Pod extends React.Component {
             <Entity key={name}
             geometry={{ primitive: 'box' }} 
             material={`color: ${this.state.color}; metalness:0.7`} 
-            className="throwable">
+            className="pod">
                 {lights}
                 <Entity bmfont-text={{ text: `${this.props.name}`, color: "#63C7B2", align: 'center'}} position="-2.5 1 0" />
             </Entity>

@@ -12,12 +12,13 @@ import Sky from './components/Sky';
 import Control from './components/Control';
 import partTexture from '../assets/images/kitten.png'
 import floorTexture from '../assets/images/circuit.jpg'
+var sphereCollider = require('./vendor/sphere-collider-patched');
 // require('aframe');
 
 var physics = require('aframe-physics-system');
 physics.registerAll();
 var extras = require('aframe-extras');
-AFRAME.registerComponent('sphere-collider', extras.misc['sphere-collider']);
+AFRAME.registerComponent('sphere-collider', sphereCollider);
 AFRAME.registerComponent('grab', extras.misc['grab']);
 
 class VRScene extends React.Component{
