@@ -13,6 +13,7 @@ import Control from './components/Control';
 import partTexture from '../assets/images/kitten.png'
 import floorTexture from '../assets/images/circuit.jpg'
 // Patched sphere module to fix deprecation warning
+var theVoid = require ('./aframe-components/theVoid')
 var sphereCollider = require('./vendor/sphere-collider-patched');
 var physics = require('aframe-physics-system');
 var extras = require('aframe-extras');
@@ -20,34 +21,7 @@ var extras = require('aframe-extras');
 physics.registerAll();
 AFRAME.registerComponent('sphere-collider', sphereCollider);
 AFRAME.registerComponent('grab', extras.misc['grab']);
-
-AFRAME.registerComponent('boom', {
-    schema: {type: 'vec3'},
-
-    init: function() {
-        this.timeout = setInterval(this.checkPosition.bind(this), 2000);
-    },
-
-    update: function() {
-        var object3D = this.el.object3D;
-        var data = this.data;
-    },
-
-    remove: function() {
-        console.log("REMOVE FIRED")
-        clearInterval(this.timeout);
-        this.el.removeObject3D(this.object3D);
-    },
-
-    checkPosition: function() {
-        if(this.el.body.position.y > 0) {
-            console.log("on platform");
-            return;
-        } else {
-            console.log("not on platform")
-        }
-    }
-})
+AFRAME.registerComponent('the-void', theVoid);
 
 class VRScene extends React.Component{
     render () {
@@ -59,6 +33,7 @@ class VRScene extends React.Component{
                 <Sky color="#000" />
                 <Entity camera id="player" look-controls wasd-controls 
                    jump-ability={{maxJumps: '3'}} position="0 0.2 0" >
+                   <Entity geometry={{ primitive: 'box'}} static-body={{shape: 'box'}} />
                  </Entity>
                 <Entity id="light" light={{type: 'point', color: '#3E72E8', intensity: '1.6'}} position="4.6 19 -9.00" />
                 <Control hand="left" />

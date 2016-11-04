@@ -9,12 +9,6 @@ class Pod extends React.Component {
         this.state = {
             color: props.color
         }
-        this.destroyPod = this.destroyPod.bind(this);
-    }
-
-    destroyPod() {
-        console.log("blowing up pod");
-        console.log(ReactDom.findDOMNode(this).getAttribute('id'));
     }
     
     componentWillMount() {
@@ -33,6 +27,7 @@ class Pod extends React.Component {
         ReactDom.findDOMNode(this).setAttribute('position', this.props.podPOS);
     }
     componentWillUnmount()  {
+        console.log("Removing: " + this.props.name)
     }
 
     render() {
@@ -47,12 +42,11 @@ class Pod extends React.Component {
         }
         return(
             <Entity key={name}
-            onDestroy={this.destroyPod}
             geometry={{ primitive: 'box' }} 
             id={this.props.name}
             material={`color: ${this.state.color}; metalness:0.7`} 
             className="pod"
-            boom >
+            the-void >
                 {lights}
                 <Entity bmfont-text={{ text: `${this.props.name}`, color: "#63C7B2", align: 'center'}} position="-2.5 1 0" />
             </Entity>

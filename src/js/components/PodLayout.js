@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDom from 'react-dom';
 import {Entity} from 'aframe-react';
 import Pod from './Pod';
 import podData from '../mock/pods.json';
@@ -13,6 +14,7 @@ class PodLayout extends React.Component {
             pods: [],
             podsLoaded: false
         };
+        this.destroyChildPod = this.destroyChildPod.bind(this);
         socket.on('newPod', (newPod) => this.podAddEvent(newPod));
         socket.on('removePod', (removePod) => this.podRemoveEvent(removePod));
         socket.on('initPod', (initPod) => this.podInitEvent(initPod));
@@ -56,6 +58,13 @@ class PodLayout extends React.Component {
         return {x: Math.random() * 50 - 25, y: 10, z: Math.random() * 50 - 25};
     }
 
+    destroyChildPod(evt) {
+        var pod = {
+            name: evt.srcElement.id
+        }
+        socket.emit('k8sDestroyPod', pod)
+    }
+
     render() {
 
         let podList = this.state.pods
@@ -64,7 +73,7 @@ class PodLayout extends React.Component {
                 <Pod podPOS={this.randomPosition()} name={pod.name} key={pod.name} color="red" />
             ))
             return(
-                <Entity>
+                <Entity id="podHolder" onDestroy={this.destroyChildPod}>
                     {podList}
                 </Entity>
             );
