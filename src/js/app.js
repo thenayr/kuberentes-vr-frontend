@@ -21,6 +21,34 @@ physics.registerAll();
 AFRAME.registerComponent('sphere-collider', sphereCollider);
 AFRAME.registerComponent('grab', extras.misc['grab']);
 
+AFRAME.registerComponent('boom', {
+    schema: {type: 'vec3'},
+
+    init: function() {
+        this.timeout = setInterval(this.checkPosition.bind(this), 2000);
+    },
+
+    update: function() {
+        var object3D = this.el.object3D;
+        var data = this.data;
+    },
+
+    remove: function() {
+        console.log("REMOVE FIRED")
+        clearInterval(this.timeout);
+        this.el.removeObject3D(this.object3D);
+    },
+
+    checkPosition: function() {
+        if(this.el.body.position.y > 0) {
+            console.log("on platform");
+            return;
+        } else {
+            console.log("not on platform")
+        }
+    }
+})
+
 class VRScene extends React.Component{
     render () {
         return(

@@ -32,6 +32,8 @@ class Pod extends React.Component {
         // Dynamically set position to spawn object
         ReactDom.findDOMNode(this).setAttribute('position', this.props.podPOS);
     }
+    componentWillUnmount()  {
+    }
 
     render() {
         // Lights crash textures on mobile, disable them
@@ -49,7 +51,8 @@ class Pod extends React.Component {
             geometry={{ primitive: 'box' }} 
             id={this.props.name}
             material={`color: ${this.state.color}; metalness:0.7`} 
-            className="pod">
+            className="pod"
+            boom >
                 {lights}
                 <Entity bmfont-text={{ text: `${this.props.name}`, color: "#63C7B2", align: 'center'}} position="-2.5 1 0" />
             </Entity>
