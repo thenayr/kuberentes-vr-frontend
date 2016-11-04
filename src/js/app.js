@@ -2,7 +2,7 @@ import 'aframe';
 import 'aframe-teleport-controls';
 import 'aframe-layout-component';
 import 'aframe-bmfont-text-component';
-// import 'aframe-particle-system-component'
+import 'aframe-vive-cursor-component';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,12 +12,12 @@ import Sky from './components/Sky';
 import Control from './components/Control';
 import partTexture from '../assets/images/kitten.png'
 import floorTexture from '../assets/images/circuit.jpg'
+// Patched sphere module to fix deprecation warning
 var sphereCollider = require('./vendor/sphere-collider-patched');
-// require('aframe');
-
 var physics = require('aframe-physics-system');
-physics.registerAll();
 var extras = require('aframe-extras');
+
+physics.registerAll();
 AFRAME.registerComponent('sphere-collider', sphereCollider);
 AFRAME.registerComponent('grab', extras.misc['grab']);
 
@@ -34,7 +34,7 @@ class VRScene extends React.Component{
                  </Entity>
                 <Entity id="light" light={{type: 'point', color: '#3E72E8', intensity: '1.6'}} position="4.6 19 -9.00" />
                 <Control hand="left" />
-                <Control hand="right" />
+                <Control hand="right" cursor="vive-cursor" />
                 <Floor />
                 <PodLayout color="red" />
             </a-scene>
