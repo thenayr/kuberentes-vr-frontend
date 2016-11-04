@@ -9,6 +9,12 @@ class Pod extends React.Component {
         this.state = {
             color: props.color
         }
+        this.destroyPod = this.destroyPod.bind(this);
+    }
+
+    destroyPod() {
+        console.log("blowing up pod");
+        console.log(ReactDom.findDOMNode(this).getAttribute('id'));
     }
     
     componentWillMount() {
@@ -16,10 +22,14 @@ class Pod extends React.Component {
 
     componentDidMount() {
         // Fun hack to make physics and grab register newly added objects
-        [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.components['sphere-collider']);
         [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.removeAttribute('sphere-collider'));
         [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.setAttribute('sphere-collider', 'objects: .pod;'));
+        // [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.components['sphere-collider']);
+
+        // Enable physics on the appended object
         ReactDom.findDOMNode(this).setAttribute('dynamic-body', '');
+
+        // Dynamically set position to spawn object
         ReactDom.findDOMNode(this).setAttribute('position', this.props.podPOS);
     }
 
@@ -35,7 +45,9 @@ class Pod extends React.Component {
         }
         return(
             <Entity key={name}
+            onDestroy={this.destroyPod}
             geometry={{ primitive: 'box' }} 
+            id={this.props.name}
             material={`color: ${this.state.color}; metalness:0.7`} 
             className="pod">
                 {lights}

@@ -24,7 +24,7 @@ AFRAME.registerComponent('grab', extras.misc['grab']);
 class VRScene extends React.Component{
     render () {
         return(
-            <a-scene id="sceneobj" stats physics="debug: true">
+            <a-scene fog={{type: 'linear', color: '#63C7B2', far: '100', near: '0' }} id="sceneobj" stats physics="debug: true" >
                 <a-assets>
                     <img  id="floor" src="../assets/images/circuit.jpg"  />
                 </a-assets>
