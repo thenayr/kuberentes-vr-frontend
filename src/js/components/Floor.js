@@ -1,6 +1,5 @@
 import React from 'react';
 import {Entity} from 'aframe-react';
-import floorTexture from '../../assets/images/circuit.jpg'
 
 export default props => (
             <Entity static-body 

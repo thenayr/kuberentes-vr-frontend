@@ -70,10 +70,10 @@ class PodLayout extends React.Component {
         let podList = this.state.pods
         if (this.state.podsLoaded) {
             podList = podList.map((pod) => (
-                <Pod podPOS={this.randomPosition()} name={pod.name} key={pod.name} color="red" />
+                <Pod podPOS={this.randomPosition()} name={pod.name} key={pod.name} color="#3774E0" />
             ))
             return(
-                <Entity id="podHolder" onDestroy={this.destroyChildPod}>
+                <Entity id="podHolder" selectable onDestroy={this.destroyChildPod}>
                     {podList}
                 </Entity>
             );

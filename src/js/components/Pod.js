@@ -38,17 +38,18 @@ class Pod extends React.Component {
         } else {
           lights = lights
             // Lights are a huge performance hit unfortunately, revisit later on
-            //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.2'}} />
+            //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.05'}} />
         }
         return(
             <Entity key={name}
             geometry={{ primitive: 'box' }} 
             id={this.props.name}
-            material={`color: ${this.state.color}; metalness:0.7`} 
+            material={` metalness:0.3; roughness: 0; src: #floor`} 
             className="pod"
-            the-void >
+            the-void 
+            >
                 {lights}
-                <Entity bmfont-text={{ text: `${this.props.name}`, color: "#63C7B2", align: 'center'}} position="-2.5 1 0" />
+
             </Entity>
         )
     }

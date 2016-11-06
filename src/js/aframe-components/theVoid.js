@@ -5,7 +5,7 @@ module.exports = {
     schema: {type: 'vec3'},
 
     init: function() {
-        this.timeout = setInterval(this.checkPosition.bind(this), 2000);
+        this.timeout = setInterval(this.checkPosition.bind(this), 5000);
     },
 
     update: function() {
