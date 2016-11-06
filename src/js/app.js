@@ -7,6 +7,7 @@ import 'aframe-selectable-component';
 import 'aframe-animation-component';
 import 'aframe-particle-system-component';
 import './fonts/exo';
+import './shaders/glow-shader';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -35,7 +36,7 @@ AFRAME.registerComponent('k8s-ui', k8sUI);
 class VRScene extends React.Component{
     render () {
         return(
-            <a-scene id="sceneobj" stats physics="debug: true" >
+            <a-scene id="sceneobj" stats physics="debug: false" >
                 <a-assets>
                     <a-asset-item id="k8smodel" src="../assets/models/yellow-k8s.obj" />
                     <img  id="floor" src="../assets/images/grid.jpg"  />
@@ -63,7 +64,8 @@ class VRScene extends React.Component{
                     <ClusterInfo />
                 </Entity>
                 <Entity id="light" light={{type: 'point', color: '#23D0EC', intensity: '1.62'}} position="0 28.78 0" />
-                <Entity id="light" light={{type: 'ambient', color: '#fff', intensity: '0.3'}} position="0 0 0 " />
+                <Entity id="light" light={{type: 'ambient', color: '#2BFECB', intensity: '1.14'}} position="0 0 0 " />
+                <Entity id="light" light={{type: 'directional', color: '#fff', intensity: '0.74'}} position="-146 80 0 " />
                 <Control hand="left" />
                 <Control hand="right" />
             <a-entity position="0 10 0" particle-system="preset: dust; maxAge: 20; randomize: false;  positionSpread: 0 0 0;  rotationAngle: 0; accelerationValue: 0 1 0; accelerationSpread: 1 0 1; velocityValue: 0 1 0; velocitySpread: 1 1 1; size: 0.2; particleCount:5000; maxParticleCount: 1000; "></a-entity>

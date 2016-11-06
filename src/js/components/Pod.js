@@ -44,7 +44,7 @@ class Pod extends React.Component {
             <Entity key={name}
             geometry={{ primitive: 'box' }} 
             id={this.props.name}
-            material={` metalness:0.3; roughness: 0; src: #floor`} 
+            material={` metalness:0.3; roughness: 0; src: #floor; `} 
             className="pod"
             the-void 
             >

@@ -6,5 +6,5 @@ export default props => (
     id="sky"
     geometry={{primitive: 'sphere', radius: 100}}
     material={{shader: 'flat', color: props.color}}
-    scale="1 1 -1"/>
+    scale="2 2 -1"/>
 );
