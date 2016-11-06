@@ -14,7 +14,7 @@ class ClusterInfo extends React.Component {
     componentDidMount() {
         // Enable physics on the appended object
         // ReactDom.findDOMNode(this).setAttribute('dynamic-body', '');
-        document.querySelector('#k8s-logo').setAttribute('material', 'flatShading: true');
+        document.querySelector('#k8s-logo').setAttribute('material', 'flatShading: true; metalness: 1.00; roughness: 0.60');
     }
     componentWillUnmount()  {
     }

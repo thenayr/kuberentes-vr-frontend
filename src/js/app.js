@@ -5,6 +5,7 @@ import 'aframe-text-component';
 import 'aframe-vive-cursor-component';
 import 'aframe-selectable-component';
 import 'aframe-animation-component';
+import 'aframe-particle-system-component';
 import './fonts/exo';
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
@@ -42,12 +43,18 @@ class VRScene extends React.Component{
                     <audio id="port" src="../assets/sounds/port.wav" />
                 </a-assets>
                 <Sky color="#000" />
-                <a-obj-model  
-                id="k8s-logo"
-                scale="0.05 0.05 0.05"  
-                position="0 10 0" 
-                src="#k8smodel" 
-                ></a-obj-model>
+                <Entity id="logo-holder" 
+                animation__scale="property: rotation; easing: linear; dur: 20000; loop: true; to: 0 360 0"
+                position="0 8 0">
+                    <a-obj-model  
+                    id="k8s-logo"
+                    scale="0.05 0.05 0.05"  
+                    position="0 0 -2" 
+                    src="#k8smodel" 
+                    ></a-obj-model>
+                </Entity>
+                <Entity light={{type: "spot", angle: "20.72", intensity: "1.8", distance: "17.42", decay:"-0.20", color: "#30a9ff"}} position=".29 7.29, 11.22" />
+                <Entity light={{type: "spot", angle: "20.72", intensity: "1.8", distance: "17.42", decay:"-0.20", color: "#30a9ff"}} rotation="0 -180 0" position=".29 7.29, -11.22" />
                 <Entity camera id="player" look-controls wasd-controls 
                    jump-ability={{maxJumps: '3'}} position="0 0.2 0" >
                    <Entity position="0.1 0 0.4" />
@@ -55,10 +62,11 @@ class VRScene extends React.Component{
                 <Entity k8s-ui visible="false">
                     <ClusterInfo />
                 </Entity>
-                <Entity id="light" light={{type: 'point', color: '#3E72E8', intensity: '3.84'}} position="0 64 0" />
+                <Entity id="light" light={{type: 'point', color: '#23D0EC', intensity: '1.62'}} position="0 28.78 0" />
                 <Entity id="light" light={{type: 'ambient', color: '#fff', intensity: '0.3'}} position="0 0 0 " />
                 <Control hand="left" />
                 <Control hand="right" />
+            <a-entity position="0 10 0" particle-system="preset: dust; maxAge: 20; randomize: false;  positionSpread: 0 0 0;  rotationAngle: 0; accelerationValue: 0 1 0; accelerationSpread: 1 0 1; velocityValue: 0 1 0; velocitySpread: 1 1 1; size: 0.2; particleCount:5000; maxParticleCount: 1000; "></a-entity>
                 <Floor />
                 <PodLayout color="red" />
             </a-scene>

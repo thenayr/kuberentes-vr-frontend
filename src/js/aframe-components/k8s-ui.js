@@ -8,7 +8,7 @@ module.exports = {
 
     schema: {
         trigger: {
-            default: 'click'
+            default: 'gripdown'
         },
         zpos: {
             default: -4
