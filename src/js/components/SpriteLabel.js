@@ -81,8 +81,8 @@ function makeTextSprite( message, parameters )
 	// get size data (height depends only on font size)
 	var metrics = context.measureText( message );
 	var textWidth = metrics.width;
-    canvas.width = 900;
-    canvas.height = 900;
+    canvas.width = 1024;
+    canvas.height = 1024;
      var cx = canvas.width / 2; 
      var cy = canvas.height / 2; 
      var tx = textWidth/ 2.0; 

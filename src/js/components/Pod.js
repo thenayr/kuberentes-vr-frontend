@@ -32,16 +32,16 @@ class Pod extends React.Component {
 
     render() {
         // Lights crash textures on mobile, disable them
-        let lights = null;
-        if (AFRAME.utils.isMobile()){
-          lights = lights
-        } else {
-          lights = lights
+        // let lights = null;
+        // if (AFRAME.utils.isMobile()){
+        //   lights = lights
+        // } else {
+        //   lights = lights
             // Lights are a huge performance hit unfortunately, revisit later on
             //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.05'}} />
-        }
+        // }
         return(
-            <Entity ref="podholder" id="pod-holder">
+            <Entity ref="podholder" id="pod-holder" pod-ui>
                 <Entity key={name}
                 ref="pod"
                 geometry={{ primitive: 'box' }} 
@@ -52,6 +52,10 @@ class Pod extends React.Component {
                 the-void >
                 <Entity sprite-label={{message: this.props.name}} position="0 .5 0" />
                 </Entity>
+                 <Entity id="pod-ui"
+                 animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
+                 text={{text: "Hello world", font: "exo 2 black",  size: 0.15, height: 0}}  
+                 material={{shader: "flat", color: "white"}} />
            </Entity>
         )
     }

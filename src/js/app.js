@@ -31,6 +31,7 @@ import floorTexture from '../assets/images/grid.jpg';
 // Patched sphere module to fix deprecation warning
 var theVoid = require ('./aframe-components/theVoid')
 var k8sUI = require ('./aframe-components/k8s-ui')
+var podUI = require ('./aframe-components/pod-ui')
 var glow = require ('./aframe-components/glow')
 var sphereCollider = require('./vendor/sphere-collider-patched');
 var physics = require('aframe-physics-system');
@@ -42,6 +43,7 @@ AFRAME.registerComponent('grab', extras.misc['grab']);
 AFRAME.registerComponent('the-void', theVoid);
 AFRAME.registerComponent('glow', glow);
 AFRAME.registerComponent('k8s-ui', k8sUI);
+AFRAME.registerComponent('pod-ui', podUI);
 
 class VRScene extends React.Component{
     render () {
