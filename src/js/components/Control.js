@@ -8,7 +8,7 @@ export default props => (
     vive-cursor
     className="controllers" 
     sphere-collider="objects: .pod;" 
-    teleport-controls 
+    teleport-controls
     grab />
 
 );

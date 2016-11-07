@@ -29,6 +29,7 @@
     "aframe-event-set-component": "^3.0.1",
     "aframe-extras": "^2.6.0",
     "aframe-layout-component": "^3.0.1",
+    "aframe-look-at-component": "^0.1.2",
     "aframe-particle-system-component": "^1.0.5",
     "aframe-physics-system": "^1.0.3",
     "aframe-react": "^3.4.0",

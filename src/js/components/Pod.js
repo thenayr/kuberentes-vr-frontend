@@ -21,10 +21,10 @@ class Pod extends React.Component {
         // [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.components['sphere-collider']);
 
         // Enable physics on the appended object
-        ReactDom.findDOMNode(this).setAttribute('dynamic-body', '');
+        ReactDom.findDOMNode(this.refs.pod).setAttribute('dynamic-body', 'shape: box;');
 
         // Dynamically set position to spawn object
-        ReactDom.findDOMNode(this).setAttribute('position', this.props.podPOS);
+        ReactDom.findDOMNode(this.refs.pod).setAttribute('position', this.props.podPOS);
     }
     componentWillUnmount()  {
         console.log("Removing: " + this.props.name)
@@ -41,15 +41,23 @@ class Pod extends React.Component {
             //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.05'}} />
         }
         return(
-            <Entity key={name}
-            geometry={{ primitive: 'box' }} 
-            id={this.props.name}
-            material={` metalness:0.3; roughness: 0; src: #floor; `} 
-            className="pod"
-            the-void 
-            >
-                {lights}
+            <Entity ref="podholder" id="pod-holder">
+                <Entity key={name}
+                ref="pod"
+                geometry={{ primitive: 'box' }} 
+                id={this.props.name}
+                material={` metalness:.2; roughness: 0.7; src: #nginx; `} 
+                className="pod"
+                force-pushable
+                the-void >
+                <Entity
 
+                static-body
+                text={{text: this.props.name, font: "exo 2 black",  size: 0.15, height: 0}}
+                look-at="[camera]"
+                position="0 1.0 0"
+                material={{shader: "flat", color: "white"}} />
+                </Entity>
             </Entity>
         )
     }

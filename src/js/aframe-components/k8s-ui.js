@@ -8,7 +8,7 @@ module.exports = {
 
     schema: {
         trigger: {
-            default: 'gripdown'
+            default: 'menudown'
         },
         zpos: {
             default: -4
@@ -46,8 +46,9 @@ module.exports = {
             this.pivot.position.copy(this.cameraEl.object3D.getWorldPosition());
 
             this.el.setAttribute('visible', true);
-            console.log(this.el);
             this.el.querySelector('#k8s-ui').emit('fadeIn');
+            this.el.querySelector('#cluster-info-holder').emit('loadmenu');
+            // this.el.querySelector('#cluster-info-holder').emit('menudown');
             
 
         } else if (this.el.getAttribute('visible') === true) {
