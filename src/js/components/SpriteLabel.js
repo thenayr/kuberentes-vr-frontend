@@ -31,8 +31,9 @@ AFRAME.registerComponent('sprite-label', {
 
         // resizeData = this.data.resize.split(' ');
         // this.sprite.scale.set( resizeData[0], resizeData[1], resizeData[2] );
-        this.spritey = makeTextSprite( this.data.message, { fontsize: 14, borderColor: {r:255, g:0, b:0, a:1.0}, backgroundColor: {r:255, g:100, b:100, a:0.8} } );
-	    this.spritey.position.set(0,.4,0);
+        this.spritey = makeTextSprite( this.data.message, { fontsize: 50, borderColor: {r:255, g:0, b:0, a:1.0}, backgroundColor: {r:255, g:100, b:100, a:0.8} } );
+	    this.spritey.position.set(-.2,.4,0);
+        // this.sprite = new SpriteText2D("SPRITE", { align: textAlign.center,  font: '40px Arial', fillStyle: '#000000' , antialias: false })
         this.el.setObject3D('mesh', this.spritey);
     },
 
@@ -61,7 +62,7 @@ function makeTextSprite( message, parameters )
 		parameters["fontface"] : "Arial";
 	
 	var fontsize = parameters.hasOwnProperty("fontsize") ? 
-		parameters["fontsize"] : 12;
+		parameters["fontsize"] : 50;
 	
 	var borderThickness = parameters.hasOwnProperty("borderThickness") ? 
 		parameters["borderThickness"] : 4;
@@ -72,15 +73,21 @@ function makeTextSprite( message, parameters )
 	var backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
 		parameters["backgroundColor"] : { r:255, g:255, b:255, a:1.0 };
 
-	// var spriteAlignment = THREE.SpriteAlignment.topLeft;
-		
 	var canvas = document.createElement('canvas');
 	var context = canvas.getContext('2d');
 	context.font = "Bold " + fontsize + "px " + fontface;
     
+    message = "Pod: " + message 
 	// get size data (height depends only on font size)
 	var metrics = context.measureText( message );
 	var textWidth = metrics.width;
+    canvas.width = 900;
+    canvas.height = 900;
+     var cx = canvas.width / 2; 
+     var cy = canvas.height / 2; 
+     var tx = textWidth/ 2.0; 
+     var ty = fontsize / 2.0; 
+    // canvas.height = textHeight;
     // canvas.width = 800;
 	
 	// background color
@@ -97,35 +104,22 @@ function makeTextSprite( message, parameters )
 	// text color
 	context.fillStyle = "rgba(255, 255, 255, 1.0)";
 
-	context.fillText( message, borderThickness, fontsize + borderThickness);
+	// context.fillText( message, borderThickness, fontsize + borderThickness);
+    context.fillText( message, cx , cy ); 
 	
 	// canvas contents will be used for a texture
 	var texture = new THREE.Texture(canvas) 
 	texture.needsUpdate = true;
 
 	var spriteMaterial = new THREE.SpriteMaterial( 
-		{ map: texture, useScreenCoordinates: false,  } );
+		{ map: texture, useScreenCoordinates: false} );
 	var sprite = new THREE.Sprite( spriteMaterial );
-	// sprite.scale.set(3,3,100);
+    sprite.scale.set( 10, 10, 1);
+    // sprite.position.set(-64, 0, 0); 
+	// sprite.scale.set(2,2,2);
+    // sprite.scale.set(1,1,1);
 	return sprite;	
 }
 module.exports.makeTextSprite = makeTextSprite;
 
 // function for drawing rounded rectangles
-function roundRect(ctx, x, y, w, h, r) 
-{
-    ctx.beginPath();
-    ctx.moveTo(x+r, y);
-    ctx.lineTo(x+w-r, y);
-    ctx.quadraticCurveTo(x+w, y, x+w, y+r);
-    ctx.lineTo(x+w, y+h-r);
-    ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
-    ctx.lineTo(x+r, y+h);
-    ctx.quadraticCurveTo(x, y+h, x, y+h-r);
-    ctx.lineTo(x, y+r);
-    ctx.quadraticCurveTo(x, y, x+r, y);
-    ctx.closePath();
-    ctx.fill();
-	ctx.stroke();   
-}
-module.exports.roundRect = roundRect;

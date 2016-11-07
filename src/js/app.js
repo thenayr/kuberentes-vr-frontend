@@ -1,16 +1,20 @@
+// 3rd party components
 import 'aframe';
 import 'aframe-teleport-controls';
 import 'aframe-layout-component';
 import 'aframe-text-component';
 import 'aframe-vive-cursor-component';
 import 'aframe-look-at-component';
-// import 'aframe-selectable-component';
 import 'aframe-animation-component';
 import 'aframe-particle-system-component';
+import './aframe-components/ForcePush';
+import { SpriteText2D, textAlign } from 'three-text2d';
+// import 'aframe-selectable-component';
 import './fonts/exo';
 import './shaders/glow-shader';
 import './components/SpriteLabel';
-import './aframe-components/ForcePush';
+
+// React components
 import {Entity, Scene} from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -77,7 +81,6 @@ class VRScene extends React.Component{
                 <BlinkingLight lpos="-49 .24 49" />
 
                 <Control hand="left" />
-                <Control hand="right" />
                 <Floor />
                 <PodLayout color="red" />
             </a-scene>

@@ -18,10 +18,10 @@ class Pod extends React.Component {
         // Fun hack to make physics and grab register newly added objects
         [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.removeAttribute('sphere-collider'));
         [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.setAttribute('sphere-collider', 'objects: .pod;'));
-        // [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.components['sphere-collider']);
+        // [].slice.call(document.querySelectorAll('.controllers')).forEach((el) => el.components['sphere-collider'].update);
 
         // Enable physics on the appended object
-        ReactDom.findDOMNode(this.refs.pod).setAttribute('dynamic-body', 'shape: box;');
+        ReactDom.findDOMNode(this.refs.pod).setAttribute('dynamic-body', '');
 
         // Dynamically set position to spawn object
         ReactDom.findDOMNode(this.refs.pod).setAttribute('position', this.props.podPOS);
@@ -50,15 +50,9 @@ class Pod extends React.Component {
                 className="pod"
                 force-pushable
                 the-void >
-                <Entity
-
-                static-body
-                text={{text: this.props.name, font: "exo 2 black",  size: 0.15, height: 0}}
-                look-at="[camera]"
-                position="0 1.0 0"
-                material={{shader: "flat", color: "white"}} />
+                <Entity sprite-label={{message: this.props.name}} position="0 .5 0" />
                 </Entity>
-            </Entity>
+           </Entity>
         )
     }
 }

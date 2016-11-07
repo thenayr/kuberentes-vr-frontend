@@ -19,7 +19,7 @@ module.exports = {
     },
 
     checkPosition: function() {
-        if(this.el.body.position.y > 0) {
+        if(this.el.body.position.y > -50) {
             return;
         } else {
             this.el.emit('destroy');
