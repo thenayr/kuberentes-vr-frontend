@@ -21,6 +21,7 @@ class PodLayout extends React.Component {
     }
 
     podInitEvent(initPod) {
+      console.log(initPod)
       this.setState({pods: initPod.podList});
       this.setState({ podsLoaded: true });
     }
@@ -70,7 +71,7 @@ class PodLayout extends React.Component {
         let podList = this.state.pods
         if (this.state.podsLoaded) {
             podList = podList.map((pod) => (
-                <Pod podPOS={this.randomPosition()} name={pod.name} key={pod.name} color="#3774E0" />
+                <Pod podPOS={this.randomPosition()} ip={pod.ip} startTime={pod.start} namespace={pod.namespace} name={pod.name} key={pod.name} color="#3774E0" />
             ))
             return(
                 <Entity id="podHolder" selectable onDestroy={this.destroyChildPod}>

@@ -15,6 +15,8 @@ module.exports = {
         this.el.addEventListener(this.data.trigger, this.eventHandler.bind(this));
 
         this.podUI = this.el.parentNode.querySelector('#pod-ui-holder');
+        this.podUI.setAttribute('visible', true);
+        // [].slice.call(this.podUI.querySelectorAll('.pod-ui-text')).forEach((el) => el.emit('podFadeIn'));
         // this.pod = this.el.querySelector('.pod');
         // position = pod.position.copy
         // this.podUI.object3D.position.copy(this.pod.object3D.position);
@@ -44,6 +46,10 @@ module.exports = {
             // this.pivot.position.copy(this.cameraEl.object3D.getWorldPosition());
 
             this.podUI.setAttribute('visible', true);
+            [].slice.call(this.podUI.querySelectorAll('.pod-ui-text')).forEach((el) => el.emit('podFadeIn'));
+            // this.podUI.querySelector('.pod-ui-text').emit('podFadeIn');
+
+            
             // this.el.querySelector('#k8s-ui').emit('fadeIn');
             // this.el.querySelector('#cluster-info-holder').emit('loadmenu');
             // this.el.querySelector('#cluster-info-holder').emit('menudown');

@@ -41,6 +41,9 @@ class Pod extends React.Component {
             // Lights are a huge performance hit unfortunately, revisit later on
             //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.05'}} />
         // }
+        var namespace = "Namespace: " + this.props.namespace;
+        var ipAddress = "IP: " + this.props.ip;
+        var startTime = "Launched: " + this.props.startTime;
         return(
             <Entity ref="podholder" pod-ui id="pod-holder">
                 <Entity key={name}
@@ -54,18 +57,42 @@ class Pod extends React.Component {
                 the-void >
                 <Entity className="sprite" sprite-label={{message: this.props.name}} position="0 .5 0" />
                 </Entity>
-                 <Entity id="pod-ui-holder"  visible="false" ref="pod-ui-holder">
-                    <Entity animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
-                    text={{text: "Namespace: default", font: "exo 2 black",  size: 0.15, height: 0}}  
-                    material={{shader: "flat", color: "white"}} />
-                    <Entity animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
-                    position="0, -.3, 0"
-                    text={{text: "Pod IP: 172.172.172.172", font: "exo 2 black",  size: 0.15, height: 0}}  
-                    material={{shader: "flat", color: "white"}} />
-                    <Entity animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
-                    position="0, -.6, 0"
-                    text={{text: "Launched : 2016-11-07T23:10:05Z", font: "exo 2 black",  size: 0.15, height: 0}}  
-                    material={{shader: "flat", color: "white"}} />
+                 <Entity id="pod-ui-holder"  
+                 visible="false" 
+                 ref="pod-ui-holder"
+                 animation={{ dur: 2000, easing: "easeInOutElastic", property: "rotation", to: "-30 0 0"}} 
+                 >
+
+                    <Entity className="pod-ui-text" 
+                    material={{shader: "flat", color: "white", opacity: 0}} 
+                    animation__namespace={{property: "scale", easing: "linear", dur: 400, delay: 0, from: '0.75, 0.75, 0.75', to: '1, 1, 1', startEvents: "podFadeIn"}} 
+                    animation={{property: "material.opacity", dur: 300, to: 1.0, startEvents: 'podFadeIn'}}
+                    position="0, 0, 0"
+                    animation__hover={{easing: "easeInOutQuad", property: "position", dir: "alternate", dur: 2000, loop: "true", to: "0 .1 0"}} 
+                    scale="0,0,0"
+                    text={{text: namespace, font: "exo 2 black",  size: 0.15, height: 0}}  
+                    />
+
+                    <Entity className="pod-ui-text" 
+                    material={{shader: "flat", color: "white", opacity: 0}} 
+                    animation__ip={{property: "scale", easing: "linear", dur: 400, from: '0.75, 0.75, 0.75', to: '1, 1, 1', startEvents: 'podFadeIn', delay: 0}} 
+                    animation={{property: "material.opacity", dur: 300, to: 1.0, startEvents: 'podFadeIn'}}
+                    position="0, -.3, .1"
+                    animation__hover={{easing: "easeInOutQuad", property: "position", dir: "alternate", dur: 2000, loop: "true", to: "0 -.2 .1"}} 
+                    scale="0,0,0"
+                    text={{text: ipAddress, font: "exo 2 black",  size: 0.15, height: 0}}  
+                    />
+
+                    <Entity className="pod-ui-text" 
+                    material={{shader: "flat", color: "white", opacity: 0}} 
+                    animation__launched={{property: "scale", easing: "linear", dur: 400, from: '0.75, 0.75, 0.75', to: '1, 1, 1', startEvents: 'podFadeIn', delay: 0}} 
+                    animation={{property: "material.opacity", dur: 300, to: 1.0, startEvents: 'podFadeIn'}}
+                    position="0, -.6, .2"
+                    animation__hover={{easing: "easeInOutQuad", property: "position", dir: "alternate", dur: 2000, loop: "true", to: "0 -.5 .2"}} 
+                    scale="0,0,0"
+                    text={{text: startTime, font: "exo 2 black",  size: 0.15, height: 0}}  
+                    />
+
                  </Entity>
            </Entity>
         )
