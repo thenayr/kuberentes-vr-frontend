@@ -10,6 +10,7 @@ class Pod extends React.Component {
             color: props.color
         }
     }
+
     
     componentWillMount() {
     }
@@ -41,21 +42,31 @@ class Pod extends React.Component {
             //   lights = <Entity light={{type: 'point', color: '#63C7B2', intensity: '0.05'}} />
         // }
         return(
-            <Entity ref="podholder" id="pod-holder" pod-ui>
+            <Entity ref="podholder" pod-ui id="pod-holder">
                 <Entity key={name}
                 ref="pod"
                 geometry={{ primitive: 'box' }} 
                 id={this.props.name}
                 material={` metalness:.2; roughness: 0.7; src: #nginx; `} 
                 className="pod"
+                pod-ui-hide
                 force-pushable
                 the-void >
-                <Entity sprite-label={{message: this.props.name}} position="0 .5 0" />
+                <Entity className="sprite" sprite-label={{message: this.props.name}} position="0 .5 0" />
                 </Entity>
-                 <Entity id="pod-ui"
-                 animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
-                 text={{text: "Hello world", font: "exo 2 black",  size: 0.15, height: 0}}  
-                 material={{shader: "flat", color: "white"}} />
+                 <Entity id="pod-ui-holder"  visible="false" ref="pod-ui-holder">
+                    <Entity animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
+                    text={{text: "Namespace: default", font: "exo 2 black",  size: 0.15, height: 0}}  
+                    material={{shader: "flat", color: "white"}} />
+                    <Entity animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
+                    position="0, -.3, 0"
+                    text={{text: "Pod IP: 172.172.172.172", font: "exo 2 black",  size: 0.15, height: 0}}  
+                    material={{shader: "flat", color: "white"}} />
+                    <Entity animation__fadeout={{property: "scale", easing: "easeInCirc", dur: 10000, from: '0, 0, 0', to: '1, 1, 1'}} 
+                    position="0, -.6, 0"
+                    text={{text: "Launched : 2016-11-07T23:10:05Z", font: "exo 2 black",  size: 0.15, height: 0}}  
+                    material={{shader: "flat", color: "white"}} />
+                 </Entity>
            </Entity>
         )
     }

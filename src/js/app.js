@@ -3,11 +3,13 @@ import 'aframe';
 import 'aframe-teleport-controls';
 import 'aframe-layout-component';
 import 'aframe-text-component';
-import 'aframe-vive-cursor-component';
+// Using custom version
+// import 'aframe-vive-cursor-component';
 import 'aframe-look-at-component';
 import 'aframe-animation-component';
 import 'aframe-particle-system-component';
 import './aframe-components/ForcePush';
+import './aframe-components/ViveCursor';
 import { SpriteText2D, textAlign } from 'three-text2d';
 // import 'aframe-selectable-component';
 import './fonts/exo';
@@ -32,6 +34,7 @@ import floorTexture from '../assets/images/grid.jpg';
 var theVoid = require ('./aframe-components/theVoid')
 var k8sUI = require ('./aframe-components/k8s-ui')
 var podUI = require ('./aframe-components/pod-ui')
+var podHide = require ('./aframe-components/pod-ui-hide')
 var glow = require ('./aframe-components/glow')
 var sphereCollider = require('./vendor/sphere-collider-patched');
 var physics = require('aframe-physics-system');
@@ -44,6 +47,7 @@ AFRAME.registerComponent('the-void', theVoid);
 AFRAME.registerComponent('glow', glow);
 AFRAME.registerComponent('k8s-ui', k8sUI);
 AFRAME.registerComponent('pod-ui', podUI);
+AFRAME.registerComponent('pod-ui-hide', podHide);
 
 class VRScene extends React.Component{
     render () {

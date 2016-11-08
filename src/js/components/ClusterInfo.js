@@ -42,8 +42,6 @@ class ClusterInfo extends React.Component {
     render() {
         let podCount = this.state.podCount + " pods"; 
         let deployCount = this.state.deployCount + " deployments"; 
-        console.log(podCount);
-        console.log(deployCount);
 
         return(
             <Entity id="cluster-info-holder" onLoadmenu={this.getClusterInfo}>
