@@ -35,6 +35,7 @@ class ClusterInfo extends React.Component {
         // ReactDom.findDOMNode(this).setAttribute('dynamic-body', '');
         // This doesn't belong here.
         document.querySelector('#k8s-logo').setAttribute('material', 'flatShading: true; metalness: 1.00; roughness: 0.60');
+        [].slice.call(document.querySelectorAll('.k8s-hands')).forEach((el) => el.setAttribute('material', 'flatShading: true; color: #3671E3; metalness: .30; roughness: 0.20'));
     }
     componentWillUnmount()  {
     }

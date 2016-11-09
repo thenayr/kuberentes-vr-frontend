@@ -8,7 +8,10 @@ import 'aframe-text-component';
 import 'aframe-look-at-component';
 import 'aframe-animation-component';
 import 'aframe-particle-system-component';
+import 'aframe-gif-shader';
+import 'aframe-fit-texture-component';
 import './aframe-components/ForcePush';
+import './aframe-components/HighTower';
 import './aframe-components/ViveCursor';
 import { SpriteText2D, textAlign } from 'three-text2d';
 // import 'aframe-selectable-component';
@@ -26,6 +29,7 @@ import Sky from './components/Sky';
 import BlinkingLight from './components/BlinkingLight';
 import Assets from './components/Assets';
 import WorldLights from './components/WorldLights';
+import Splash from './components/Splash';
 import ClusterInfo from './components/ClusterInfo';
 import Control from './components/Control';
 import partTexture from '../assets/images/kitten.png';
@@ -54,20 +58,22 @@ class VRScene extends React.Component{
         return(
             <a-scene id="sceneobj" stats physics="debug: false" >
 
-                <Entity position="0 10 0" particle-system="preset: dust; maxAge: 20; randomize: false;  positionSpread: 0 0 0;  rotationAngle: 0; accelerationValue: 0 1 0; accelerationSpread: 1 0 1; velocityValue: 0 1 0; velocitySpread: 1 1 1; size: 0.2; particleCount:5000; maxParticleCount: 1000; " />
+                <Entity position="0 10 0" particle-system="preset: dust; maxAge: 20; randomize: false;  positionSpread: 0 0 0;  rotationAngle: 0; accelerationValue: 0 1 0; accelerationSpread: 1 0 1; velocityValue: 0 1 0; velocitySpread: 1 1 1; size: 0.2; particleCount:1000; maxParticleCount: 1000; " />
 
                 <Assets />
                 <Sky />
-                
+
                 <Entity id="logo-holder" 
                 animation__scale="property: rotation; easing: linear; dur: 20000; loop: true; to: 0 360 0"
                 position="0 8 0">
                     <a-obj-model  
+                    high-tower
                     id="k8s-logo"
                     scale="0.05 0.05 0.05"  
                     position="0 0 -2" 
                     src="#k8smodel" 
                     ></a-obj-model>
+                    <a-entity id="kelsey-em" visible="false" position="0 0 0" particle-system=" maxParticleCount: 200; preset: dust; size: 15; particleCount:200; texture: #kelsey" ></a-entity>
                 </Entity>
                 
                 <Entity camera id="player" 

@@ -133,7 +133,7 @@ AFRAME.registerComponent('vive-cursor', {
    */
   onMouseUp: function () {
     this.twoWayEmit(EVENTS.MOUSEUP);
-    if (!this.intersectedEl || this.mouseDownEl !== this.intersectedEl) { return; }
+    // if (!this.intersectedEl || this.mouseDownEl !== this.intersectedEl) { return; }
     this.twoWayEmit(EVENTS.CLICK);
   },
 

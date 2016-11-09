@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 4
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        type: wordpress
+    spec:
+     containers:
+     - name: wordpress
+       image: wordpress:latest

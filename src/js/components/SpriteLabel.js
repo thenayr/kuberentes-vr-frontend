@@ -39,7 +39,6 @@ AFRAME.registerComponent('sprite-label', {
 
 
     remove: function() {
-        console.log('remove sprite');
         if (this.mesh) this.el.removeObject3D('mesh');
     }
 
