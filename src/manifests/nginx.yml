@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
-  replicas: 4
+  replicas: 6
   revisionHistoryLimit: 2
   template:
     metadata:

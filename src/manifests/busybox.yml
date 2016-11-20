@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: busybox
+spec:
+  replicas: 8
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: busybox
+        type: busybox
+    spec:
+     containers:
+     - name: busybox
+       image: busybox:latest
+       command: [ "sh", "-c", "while true; do echo hello world; sleep 1; done"]

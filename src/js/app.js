@@ -3,8 +3,6 @@ import 'aframe';
 import 'aframe-teleport-controls';
 import 'aframe-layout-component';
 import 'aframe-text-component';
-// Using custom version
-// import 'aframe-vive-cursor-component';
 import 'aframe-look-at-component';
 import 'aframe-animation-component';
 import 'aframe-particle-system-component';
@@ -14,7 +12,6 @@ import './aframe-components/ForcePush';
 import './aframe-components/HighTower';
 import './aframe-components/ViveCursor';
 import { SpriteText2D, textAlign } from 'three-text2d';
-// import 'aframe-selectable-component';
 import './fonts/exo';
 import './shaders/glow-shader';
 import './components/SpriteLabel';
@@ -32,14 +29,12 @@ import WorldLights from './components/WorldLights';
 import Splash from './components/Splash';
 import ClusterInfo from './components/ClusterInfo';
 import Control from './components/Control';
-import partTexture from '../assets/images/kitten.png';
-import floorTexture from '../assets/images/grid.jpg';
-// Patched sphere module to fix deprecation warning
 var theVoid = require ('./aframe-components/theVoid')
 var k8sUI = require ('./aframe-components/k8s-ui')
 var podUI = require ('./aframe-components/pod-ui')
 var podHide = require ('./aframe-components/pod-ui-hide')
 var glow = require ('./aframe-components/glow')
+// Patched sphere module to fix deprecation warning
 var sphereCollider = require('./vendor/sphere-collider-patched');
 var physics = require('aframe-physics-system');
 var extras = require('aframe-extras');
@@ -75,7 +70,7 @@ class VRScene extends React.Component{
                     ></a-obj-model>
                     <a-entity id="kelsey-em" visible="false" position="0 0 0" particle-system=" maxParticleCount: 200; preset: dust; size: 15; particleCount:200; texture: #kelsey" ></a-entity>
                 </Entity>
-                
+
                 <Entity camera id="player" 
                 look-controls 
                 wasd-controls 
@@ -92,7 +87,7 @@ class VRScene extends React.Component{
                 <BlinkingLight lpos="-49 .24 -49" />
                 <BlinkingLight lpos="-49 .24 49" />
 
-                <Control hand="left" />
+                <Control />
                 <Floor />
                 <PodLayout color="red" />
             </a-scene>

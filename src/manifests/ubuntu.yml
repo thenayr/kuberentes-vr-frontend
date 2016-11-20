@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ubuntu
+spec:
+  replicas: 6
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+        type: ubuntu
+    spec:
+     containers:
+     - name: ubuntu
+       image: ubuntu:devel
+       command: [ "sh", "-c", "while true; do echo hello world; sleep 1; done"]

@@ -12,6 +12,7 @@ class Pod extends React.Component {
         }
         this.containerMat = {
             nginx: "#nginx",
+            ubuntu: "#ubuntu",
             wordpress: "#wordpress",
             redis: "#redis",
             k8s: "#k8s"
@@ -75,7 +76,7 @@ class Pod extends React.Component {
                     position="0, .3, -.1"
                     animation__hover={{easing: "easeInOutQuad", property: "position", dir: "alternate", dur: 2000, loop: "true", to: "0 .4 0"}} 
                     scale="0,0,0"
-                    text={{text: name, font: "exo 2 black",  size: 0.15, height: 0}}  
+                    text={{text: ipAddress, font: "exo 2 black",  size: 0.15, height: 0}}  
                     />
 
 
@@ -109,6 +110,7 @@ class Pod extends React.Component {
                 className="pod"
                 force-pushable="force: 300"
                 the-void >
+                <Entity className="sprite" sprite-label={{message: this.props.name}} position="0 .5 0" />
                 </Entity>
                 {podTextWrapper}         
 

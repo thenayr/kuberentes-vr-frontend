@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import {Entity} from 'aframe-react';
 import io from 'socket.io-client';
 
-const socket = io('http://blackpearl.local:9003');
+const socket = io('http://localhost:9003');
 
 class ClusterInfo extends React.Component {
 

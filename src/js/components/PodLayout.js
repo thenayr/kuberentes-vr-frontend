@@ -5,7 +5,7 @@ import Pod from './Pod';
 import podData from '../mock/pods.json';
 import io from 'socket.io-client';
 
-const socket = io('http://blackpearl.local:9003');
+const socket = io('http://localhost:9003');
 
 class PodLayout extends React.Component {
     constructor(props) {
