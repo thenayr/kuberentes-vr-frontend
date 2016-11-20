@@ -21,6 +21,8 @@ Software:
 
 I am running all of the software locally on my Mac and connecting to my Mac's DNS name directly from the Experimental chrome build on the Windows machine.  It's gross and complicated at the moment...
 
+Note: You CAN run this without VR, you will be limited to WASD movement controls and currently can't interact with pods in any way.  
+
 ## Build and run
 
 Install dependencies:
