@@ -3,15 +3,15 @@ import React from 'react';
 
 export default props => (
 <a-assets>
-    <a-asset-item id="k8smodel" src="../assets/models/yellow-k8s.obj" crossorigin="anonymous"/>
-    <a-asset-item id="k8slogo" src="../assets/models/k8s-logo.obj" crossorigin="anonymous"/>
-    <img  id="floor" src="../assets/images/grid.jpg" crossorigin="anonymous" />
-    <img  id="nginx" src="../assets/images/nginx.jpg" crossorigin="anonymous" />
-    <img  id="wordpress" src="../assets/images/wordpress.jpg" crossorigin="anonymous" />
-    <img  id="kelsey" src="../assets/images/kelsey.png" crossorigin="anonymous" />
-    <img  id="ubuntu" src="../assets/images/ubuntu.png" crossorigin="anonymous" />
-    <img  id="redis" src="../assets/images/redis.jpg" crossorigin="anonymous" />
-    <img  id="k8s" src="../assets/images/k8s.jpg" crossorigin="anonymous" />
-    <img  id="stars" src="../assets/images/stars.png" crossorigin="anonymous" />
+    <a-asset-item id="k8smodel" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/models/yellow-k8s.obj"  />
+    <a-asset-item id="k8slogo" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/models/k8s-logo.obj"  />
+    <img  id="floor" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/grid.jpg"  />
+    <img  id="nginx" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/nginx.jpg"  />
+    <img  id="wordpress" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/wordpress.jpg"  />
+    <img  id="kelsey" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/kelsey.png"  />
+    <img  id="ubuntu" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/ubuntu.png"  />
+    <img  id="redis" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/redis.jpg"  />
+    <img  id="k8s" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/k8s.jpg"  />
+    <img  id="stars" src="https://cdn.rawgit.com/thenayr/kuberentes-vr-frontend/master/src/assets/images/stars.png"  />
 </a-assets>
 );
