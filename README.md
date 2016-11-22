@@ -1,6 +1,6 @@
 ## Description
 
-This is the Kubernetes VR web front-end.  For a detailed look into this project, please read [Building the Kubernetes VR experience](http://medium.com).
+This is the Kubernetes VR web front-end.  For a detailed look into this project, please read [Building the Kubernetes VR experience](https://medium.com/@iamnayr/building-the-kubernetes-virtual-reality-experience-b681464f0c98).
 
 This project was built for the 2016 Cloud Native Conference (Kubecon).  It is *very experimental*.
 
